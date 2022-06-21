@@ -9,6 +9,7 @@ def get_size(cms):
 
 
 assert(get_size(37) == 'S')
+# added test to verify size of 38 cms
 assert(get_size(38) == 'M')
 assert(get_size(40) == 'M')
 assert(get_size(43) == 'L')
