@@ -23,20 +23,29 @@ def print_color_map():
     return len(color_manual)
 
 
-def get_separator_index(color_manual):
-    all_color_separator_indices = []
+def get_indices_of_separator(color_manual):
+    separator_indices_of_all_pairs = []
+    separator = "|"
     for color_map in color_manual:
-        indices = [i for i, c in enumerate(color_map) if c == "|"]
-        all_color_separator_indices.append(indices)
-    return all_color_separator_indices
+        indices = [i for i, c in enumerate(color_map) if c == separator]
+        separator_indices_of_all_pairs.append(indices)
+    return separator_indices_of_all_pairs
 
 result = print_color_map()
+# test total set of pairs
 assert(result == 25)
+
 color_mapping = get_color_map()
+
+# test if pair_numbers are zero based
 assert(color_mapping.get(1) == ["White", "Blue"])
+
+# test if pair number starts with 1
 assert(next(iter(color_mapping)) == 1)
+
 color_manual = format_color_mapping()
 
-assert(len(set(tuple(x) for x in get_separator_index(color_manual))) == 1)
+# check if the separators are aligned in a same position by checking index of separators.
+assert(len(set(tuple(x) for x in get_indices_of_separator(color_manual))) == 1)
 
 print("All is well (maybe!)\n")
