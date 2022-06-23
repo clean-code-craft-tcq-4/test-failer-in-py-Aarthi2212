@@ -6,16 +6,28 @@ major_colors = ["White", "Red", "Black"]
 minor_colors = ["Blue", "Orange", "Green", "Brown", "Slate"]
 result = print_color_map(major_colors, minor_colors)
 assert(result == 15)
+color_mapping = get_color_map(major_colors, minor_colors)
+assert(color_mapping.get(5) == ["White", "Slate"])
+assert(color_mapping.get(11) == ["Black", "Blue"])
 
 major_colors = ["White", "Red", "Black", "Yellow", "Violet"]
 minor_colors = ["Blue", "Orange"]
 result = print_color_map(major_colors, minor_colors)
 assert(result == 10)
 
+color_mapping = get_color_map(major_colors, minor_colors)
+assert(color_mapping.get(3) == ["Red", "Blue"])
+assert(color_mapping.get(8) == ["Yellow", "Orange"])
+
 major_colors = ["White", "Red", "Black"]
 minor_colors = ["Blue", "Orange"]
 result = print_color_map(major_colors, minor_colors)
 assert(result == 6)
+
+color_mapping = get_color_map(major_colors, minor_colors)
+assert(color_mapping.get(3) == ["Red", "Blue"])
+assert(color_mapping.get(5) == ["Black", "Blue"])
+assert(color_mapping.get(6) == ["Black", "Orange"])
 
 major_colors = ["White", "Red", "Black", "Yellow", "Violet"]
 minor_colors = ["Blue", "Orange", "Green", "Brown", "Slate"]
@@ -26,6 +38,20 @@ color_mapping = get_color_map(major_colors, minor_colors)
 
 # test if pair_numbers are zero based
 assert(color_mapping.get(1) == ["White", "Blue"])
+
+assert(color_mapping.get(5) == ["White", "Slate"])
+
+assert(color_mapping.get(6) == ["Red", "Blue"])
+
+assert(color_mapping.get(10) == ["Red", "Slate"])
+
+assert(color_mapping.get(11) == ["Black", "Blue"])
+
+assert(color_mapping.get(16) == ["Yellow", "Blue"])
+
+assert(color_mapping.get(21) == ["Violet", "Blue"])
+
+assert(color_mapping.get(25) == ["Violet", "Slate"])
 
 # test if pair number starts with 1
 assert(next(iter(color_mapping)) == 1)
