@@ -39,6 +39,8 @@ color_mapping = get_color_map(major_colors, minor_colors)
 # test if pair_numbers are zero based
 assert(color_mapping.get(1) == ["White", "Blue"])
 
+assert(color_mapping.get(4) == ["White", "Brown"])
+
 assert(color_mapping.get(5) == ["White", "Slate"])
 
 assert(color_mapping.get(6) == ["Red", "Blue"])
@@ -48,6 +50,8 @@ assert(color_mapping.get(10) == ["Red", "Slate"])
 assert(color_mapping.get(11) == ["Black", "Blue"])
 
 assert(color_mapping.get(16) == ["Yellow", "Blue"])
+
+assert(color_mapping.get(18) == ["Yellow", "Green"])
 
 assert(color_mapping.get(21) == ["Violet", "Blue"])
 
