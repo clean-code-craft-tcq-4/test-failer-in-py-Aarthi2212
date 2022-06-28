@@ -60,8 +60,7 @@ assert(color_mapping.get(25) == ["Violet", "Slate"])
 # test if pair number starts with 1
 assert(next(iter(color_mapping)) == 1)
 
-color_manual = format_color_mapping()
-
+color_manual = format_color_mapping(major_colors, minor_colors)
 # check if the separators are aligned in a same position by checking index of separators.
 assert(len(set(tuple(x) for x in get_indices_of_separator(color_manual))) == 1)
 
