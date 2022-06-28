@@ -1,6 +1,11 @@
 ''' Maps Colors with pair numbers '''
 manual_format = '{:<{width}} | {:<{width}} | {:<{width}}'
 
+def get_color_from_index(colors, index):
+    if index >= len(colors):
+        raise Exception('Color index out of range')
+    return colors[index]
+
 def get_color_map(major_colors, minor_colors):
     total_pairs = len(major_colors) * len(minor_colors)
     color_mapping = {}
@@ -8,7 +13,8 @@ def get_color_map(major_colors, minor_colors):
         zero_based_pair_number = pair_number - 1
         major_color_index = zero_based_pair_number // len(minor_colors)
         minor_color_index = zero_based_pair_number % len(minor_colors)
-        major_color, minor_color = major_colors[major_color_index], minor_colors[minor_color_index]
+        major_color = get_color_from_index(major_colors, major_color_index)
+        minor_color = get_color_from_index(minor_colors, minor_color_index)
         color_mapping.update({pair_number : [major_color, minor_color]})
     return color_mapping
 

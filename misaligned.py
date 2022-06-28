@@ -1,14 +1,27 @@
 ''' Tests to verify color mapping'''
-from color_mapper import print_color_map, get_color_map, format_color_mapping, get_indices_of_separator
+from color_mapper import print_color_map, get_color_map, format_color_mapping, get_indices_of_separator, get_color_from_index
 
 # test total set of pairs with varying length
 major_colors = ["White", "Red", "Black"]
 minor_colors = ["Blue", "Orange", "Green", "Brown", "Slate"]
 result = print_color_map(major_colors, minor_colors)
 assert(result == 15)
+
+
 color_mapping = get_color_map(major_colors, minor_colors)
 assert(color_mapping.get(5) == ["White", "Slate"])
 assert(color_mapping.get(11) == ["Black", "Blue"])
+
+assert(get_color_from_index(major_colors, 0) == "White")
+
+error = ""
+try:
+    result = get_color_from_index(minor_colors, 6)
+except Exception as e:
+    result = e
+    error = str(e)
+assert(isinstance(result, Exception) == True)
+assert(error == "Color index out of range")
 
 major_colors = ["White", "Red", "Black", "Yellow", "Violet"]
 minor_colors = ["Blue", "Orange"]
